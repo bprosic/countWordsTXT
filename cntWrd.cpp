@@ -6,30 +6,30 @@
 #include<bits/stdc++.h>
 #include<vector>
 
-std::vector<std::string> dd;
+std::vector<std::string> vectorWords;
 long int nrOfFiles=0;
 
 int loopAllFiles()
 {
 	DIR *d;
-	char *p1,*p2;
+	char *char1,*char2;
 	int ret;
 	int arrSize=0;
 	struct dirent *dir;
 	d=opendir(".");
 	if(d)
 	{
-		while((dir=readdir(d))!=NULL)
+		while((dir=reavectorWordsir(d))!=NULL)
 		{
-			p1=strtok(dir->d_name,".");
-			p2=strtok(NULL,".");
+			char1=strtok(dir->d_name,".");
+			char2=strtok(NULL,".");
 			
-			if(p2!=NULL)
+			if(char2!=NULL)
 			{
-				ret=strcmp(p2,"txt");
+				ret=strcmp(char2,"txt");
 				if(ret==0)
 				{
-					dd.push_back(p1);
+					vectorWords.push_back(char1);
 					nrOfFiles++;
 				}
 			}
@@ -43,11 +43,11 @@ int main()
 {
 	unsigned long long w_count=0;
 	loopAllFiles();
-	unsigned long long c = dd.size();
+	unsigned long long c = vectorWords.size();
 	for(int i=0;i<c;i++){
 
 		int t=0;
-		std::ifstream infile(dd[i]+".txt");
+		std::ifstream infile(vectorWords[i]+".txt");
 		std::istream_iterator<std::string> in{ infile },end;
 
 		t=std::distance(in,end);
